@@ -1,0 +1,149 @@
+<odoo>
+  <record id="view_partner_form_call_center" model="ir.ui.view">
+    <field name="name">res.partner.form.call.center</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+
+      <!-- A) HEADER: stat-buttons (doimo ARCH ichida bo‘lishi kerak) -->
+      <xpath expr="//sheet" position="before">
+        <header>
+
+          <!-- Mijoz xaridlari (count after text) -->
+          <button type="object"
+                  name="action_open_partner_services"
+                  class="oe_stat_button"
+                  icon="fa-cogs">
+            <span class="o_stat_info">
+              <span class="o_stat_text">Mijoz xaridlari</span>
+              <field name="service_count" class="o_stat_value" style="margin-left:6px"/>
+            </span>
+          </button>
+
+          <!-- Mijoz servicelari (count after text) -->
+          <button type="object"
+                  name="action_open_partner_leads"
+                  class="oe_stat_button"
+                  icon="fa-star">
+            <span class="o_stat_info">
+              <span class="o_stat_text">Mijoz servicelari</span>
+              <field name="lead_count" class="o_stat_value" style="margin-left:6px"/>
+            </span>
+          </button>
+
+          <!-- Qo'ng'iroqlar (count after text) -->
+          <button type="object"
+                  name="action_open_partner_calls"
+                  class="oe_stat_button"
+                  icon="fa-phone">
+            <span class="o_stat_info">
+              <span class="o_stat_text">Qo'ng'iroqlar</span>
+              <field name="call_total_count" class="o_stat_value" style="margin-left:6px"/>
+            </span>
+          </button>
+
+        </header>
+        <!-- Header ichidagi xuddi shu <xpath expr="//sheet" position="before"> blokida qo'shing -->
+      </xpath>
+
+      <!-- B) Title ni soddalashtirish -->
+      <xpath expr="//sheet//div[hasclass('oe_title')]" position="replace">
+        <div class="oe_title">
+          <label string="Mijoz ismi" for="name" class="oe_edit_only"/>
+          <h1>
+            <field name="name" placeholder="e.g. Brandon Freeman"/>
+          </h1>
+        </div>
+      </xpath>
+
+      <!-- C) Address/Phone/Email/Website blokini yashirish -->
+      <xpath expr="//sheet//group[.//field[@name='street'] and .//field[@name='phone'] and .//field[@name='email'] and .//field[@name='website']]" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <!-- D) Invoicing tabni yashirish -->
+      <xpath expr="//sheet/notebook/page[.//field[@name='bank_ids']]" position="attributes">
+        <attribute name="invisible">1</attribute>
+      </xpath>
+
+      <xpath expr="//sheet/notebook" position="before">
+        <group name="call_center_info" string="MIJOZ MA'LUMOTLARI">
+          <group>
+            <div class="o_row">
+              <field name="phone" required="1" class="o_inline" placeholder="+998 90 123 45 67"/>
+              <button name="action_sip_call"
+                      type="object"
+                      class="o_inline o_icon_button"
+                      icon="fa-phone"
+                      title="MicroSIP orqali qo‘ng‘iroq"
+                      modifiers='{"invisible": ["|", ["phone","=",false], ["phone","=",""]]}'/>
+            </div>
+            <field name="contact_type"/>
+            <field name="is_blocked"/>
+          </group>
+
+          <group string="LOCATION">
+            <field name="country_id"/>
+            <field name="state_id"
+                  domain="[('country_id','=',country_id)]"
+                  options="{'no_open': True}"/>
+            <field name="city" placeholder="City / District"/>
+            <field name="street" placeholder="Address line"/>
+          </group>
+        </group>
+      </xpath>
+
+
+      <!-- F) Sales & Purchase tab nomini o‘zgartirish -->
+      <xpath expr="//sheet/notebook/page[.//field[@name='property_payment_term_id']]" position="attributes">
+        <attribute name="string">Mijoz haridlari</attribute>
+      </xpath>
+
+      <!-- G) Yangi 'Mijoz servislari' sahifa: faqat CRM leadlar -->
+      <xpath expr="//sheet/notebook" position="inside">
+        <page string="Mijoz servislari">
+          <group string="CRM LEADLAR">
+            <field name="lead_ids" context="{'default_partner_id': id}">
+              <list>
+                <field name="name"/>
+                <field name="stage_id"/>
+                <field name="user_id"/>
+                <field name="expected_revenue" optional="show"/>
+                <field name="probability" optional="show"/>
+                <field name="date_deadline" optional="show"/>
+                <field name="tag_ids" optional="hide"/>
+                <field name="phone" optional="hide"/>
+                <field name="mobile" optional="hide"/>
+                <field name="email_from" optional="hide"/>
+              </list>
+              <form>
+                <sheet>
+                  <group>
+                    <field name="partner_id" readonly="1"/>
+                    <field name="name"/>
+                    <field name="stage_id"/>
+                    <field name="user_id"/>
+                    <field name="expected_revenue"/>
+                    <field name="probability"/>
+                    <field name="date_deadline"/>
+                    <field name="tag_ids"/>
+                    <field name="phone"/>
+                    <field name="mobile"/>
+                    <field name="email_from"/>
+                    <field name="description"/>
+                  </group>
+                </sheet>
+              </form>
+            </field>
+
+            <button type="object"
+                    name="action_open_partner_leads"
+                    string="Leadlarni to‘liq ochish"
+                    class="btn btn-secondary o_form_button"/>
+          </group>
+        </page>
+      </xpath>
+
+    </field>
+  </record>
+</odoo>

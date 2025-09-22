@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates xml:space="preserve">
+  <t t-name="call_center.QongiroqlarButtonPatch"
+     t-inherit="mail.Chatter"
+     t-inherit-mode="extension">
+
+    <!-- Odoo 18 chatter topbar -->
+    <xpath expr="//div[contains(@class, 'o-mail-Chatter-topbar')]" position="inside">
+      <button type="button"
+              class="btn btn-secondary o_chatter_button"
+              t-on-click="() => this.env.services.call_centerQongiroqlar.openForCurrentRecord(this)"
+              title="Qo‘ng‘iroqlar">
+        <i class="fa fa-phone"/>
+        <span class="ms-1">Qo‘ng‘iroqlar</span>
+      </button>
+    </xpath>
+
+  </t>
+</templates>

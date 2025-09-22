@@ -1,0 +1,19 @@
+<odoo>
+  <record id="view_partner_chatter_call_center" model="ir.ui.view">
+    <field name="name">res.partner.chatter.call.center</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+      <!-- Insert after existing topbar buttons (Send message / Log note / Activities) -->
+      <xpath expr="//div[contains(@class,'o_chatter_topbar')]" position="inside">
+        <button type="object"
+                name="action_open_partner_calls"
+                class="btn btn-secondary o_chatter_button"
+                icon="fa-phone"
+                groups="base.group_user">
+          Qo'ng'iroqlar
+        </button>
+      </xpath>
+    </field>
+  </record>
+</odoo>

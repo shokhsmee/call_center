@@ -1,0 +1,50 @@
+<odoo>
+  <!-- List / form views -->
+  <record id="view_call_center_service_list" model="ir.ui.view">
+    <field name="name">call.center.service.list</field>
+    <field name="model">call.center.service</field>
+    <field name="arch" type="xml">
+      <list editable="bottom">
+        <field name="name"/>
+        <field name="partner_id"/>
+        <field name="product_id"/>
+        <field name="start_date"/>
+        <field name="end_date"/>
+        <field name="state"/>
+      </list>
+    </field>
+  </record>
+
+  <record id="view_call_center_service_form" model="ir.ui.view">
+    <field name="name">call.center.service.form</field>
+    <field name="model">call.center.service</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="partner_id"/>
+            <field name="product_id"/>
+            <field name="start_date"/>
+            <field name="end_date"/>
+            <field name="state"/>
+            <field name="note"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- Action + Menu under CRM -->
+  <record id="action_call_center_service" model="ir.actions.act_window">
+    <field name="name">Mijoz servislar</field>
+    <field name="res_model">call.center.service</field>
+    <field name="view_mode">list,form</field>
+    <field name="context">{}</field>
+  </record>
+
+  <menuitem id="menu_call_center_root" name="Call Center"
+            parent="crm.crm_menu_root" sequence="90"/>
+  <menuitem id="menu_call_center_service" name="Mijoz servislar"
+            parent="menu_call_center_root" action="action_call_center_service" sequence="10"/>
+</odoo>

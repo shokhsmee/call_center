@@ -1,0 +1,68 @@
+<odoo noupdate="1">
+  <!-- Create states only if not present -->
+  <record id="uz_state_tk" model="res.country.state">
+    <field name="name">Toshkent</field>
+    <field name="code">TK</field>
+    <field name="country_id" ref="base.uz"/>
+  </record>
+  <record id="uz_state_an" model="res.country.state">
+    <field name="name">Andijon</field>
+    <field name="code">AN</field>
+    <field name="country_id" ref="base.uz"/>
+  </record>
+  <record id="uz_state_bu" model="res.country.state">
+    <field name="name">Buxoro</field>
+    <field name="code">BU</field>
+    <field name="country_id" ref="base.uz"/>
+  </record>
+  <record id="uz_state_fa" model="res.country.state">
+    <field name="name">Farg‘ona</field>
+    <field name="code">FA</field>
+    <field name="country_id" ref="base.uz"/>
+  </record>
+  <record id="uz_state_ji" model="res.country.state">
+    <field name="name">Jizzax</field>
+    <field name="code">JI</field>
+    <field name="country_id" ref="base.uz"/>
+  </record>
+  <record id="uz_state_kh" model="res.country.state">
+    <field name="name">Xorazm</field>
+    <field name="code">KH</field>
+    <field name="country_id" ref="base.uz"/>
+  </record>
+  <record id="uz_state_na" model="res.country.state">
+    <field name="name">Navoiy</field>
+    <field name="code">NA</field>
+    <field name="country_id" ref="base.uz"/>
+  </record>
+  <record id="uz_state_ng" model="res.country.state">
+    <field name="name">Namangan</field>
+    <field name="code">NG</field>
+    <field name="country_id" ref="base.uz"/>
+  </record>
+  <record id="uz_state_qa" model="res.country.state">
+    <field name="name">Qashqadaryo</field>
+    <field name="code">QA</field>
+    <field name="country_id" ref="base.uz"/>
+  </record>
+  <record id="uz_state_qr" model="res.country.state">
+    <field name="name">Qoraqalpog‘iston</field>
+    <field name="code">QR</field>
+    <field name="country_id" ref="base.uz"/>
+  </record>
+  <record id="uz_state_sa" model="res.country.state">
+    <field name="name">Samarqand</field>
+    <field name="code">SA</field>
+    <field name="country_id" ref="base.uz"/>
+  </record>
+  <record id="uz_state_si" model="res.country.state">
+    <field name="name">Sirdaryo</field>
+    <field name="code">SI</field>
+    <field name="country_id" ref="base.uz"/>
+  </record>
+  <record id="uz_state_su" model="res.country.state">
+    <field name="name">Surxondaryo</field>
+    <field name="code">SU</field>
+    <field name="country_id" ref="base.uz"/>
+  </record>
+</odoo>
