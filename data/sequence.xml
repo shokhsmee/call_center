@@ -1,0 +1,14 @@
+<odoo noupdate="1">
+    <!-- Company-independent; Odoo will lock the row to avoid race conditions -->
+    <record id="seq_call_center_service_number" model="ir.sequence">
+        <field name="name">Call Center Service Number</field>
+        <field name="code">call.center.service.number</field>
+        <field name="prefix"></field>
+        <field name="padding">6</field>
+        <!-- Start from 100000 -->
+        <field name="number_next">100000</field>
+        <field name="implementation">standard</field>
+        <field name="use_date_range">False</field>
+    </record>
+</odoo>
+  

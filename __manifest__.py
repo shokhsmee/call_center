@@ -9,6 +9,7 @@
         "security/ir.model.access.csv",
         "data/ir_default.xml",
         "data/uz_states.xml",
+        "data/sequence.xml",
         "views/service_views.xml",
         "views/res_partner_views.xml",
         # "views/res_partner_buttons.xml",  # optional – comment out to remove stat button
